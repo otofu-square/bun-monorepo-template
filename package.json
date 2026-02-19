@@ -1,0 +1,29 @@
+{
+  "name": "bun-monorepo-template",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev:server": "bun run --filter @bun-monorepo-template/server dev",
+    "typecheck": "bun run --filter '@bun-monorepo-template/*' typecheck",
+    "lint": "bun run lint:oxlint && bun run lint:oxfmt",
+    "lint:oxlint": "oxlint --type-aware --type-check",
+    "lint:oxfmt": "oxfmt --check apps packages",
+    "format": "bun run format:oxlint && bun run format:oxfmt",
+    "format:oxlint": "oxlint --type-aware --type-check --fix",
+    "format:oxfmt": "oxfmt apps packages"
+  },
+  "devDependencies": {
+    "@tsconfig/strictest": "2.0.8",
+    "@types/bun": "1.3.9",
+    "@typescript/native-preview": "7.0.0-dev.20260215.1",
+    "oxfmt": "0.32.0",
+    "oxlint": "1.47.0",
+    "oxlint-tsgolint": "0.13.0"
+  },
+  "packageManager": "bun@1.3.9"
+}
